@@ -1,8 +1,9 @@
 "use strict";
-import { renderComments } from "./MODULE/Render.js";
-import { getComments } from "/MODULE/API.js";
+import { getComments } from "./modules/api.js";
+import { renderComments } from "./modules/renderComments.js";
 
- //СТР РЕЖИМ *
+
+//СТР РЕЖИМ *
 
 
 

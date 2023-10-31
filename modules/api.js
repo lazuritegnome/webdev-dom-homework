@@ -1,5 +1,5 @@
 import { setComments } from "../main.js";
-import { renderComments } from "./Render.js";
+import { renderComments } from "./renderComments.js";
 
 
 export const getComments = () => {

@@ -1,7 +1,7 @@
 import { comments } from "../main.js";
-import { renderComments } from "./Render.js";
+import { renderComments } from "./renderComments.js";
 import { postComments } from "./api.js";
-import { delay } from "./templates.js";
+import { delay } from "./utils.js";
 
 
 export function addComment() {
