@@ -11,8 +11,8 @@ body {
   padding-top: 100px;
 }
 
-.mask::after{
-  content: url('./qwe.gif');
+.mask::after {
+  content: url("./img/qwe.gif");
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,8 +34,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-.mask-comment::after{
-  content: url('./lap.gif');
+.mask-comment::after {
+  content: url("./img/lap.gif");
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,12 +86,12 @@ body {
   flex-direction: column;
   gap: 24px;
 }
-.comment-date{
+.comment-date {
   min-width: 110px;
 }
 .comment {
   padding: 48px;
-  word-break:break-all;
+  word-break: break-all;
 }
 
 .comment-header {
@@ -118,10 +118,10 @@ body {
     transform: rotate(0deg);
   }
   25% {
-    transform: rotate(30deg);;
+    transform: rotate(30deg);
   }
   75% {
-    transform: rotate(-30deg);;
+    transform: rotate(-30deg);
   }
   to {
     transform: rotate(0deg);
@@ -175,6 +175,7 @@ body {
 .add-form-name {
   width: 300px;
   padding: 11px 22px;
+  background-color: gainsboro;
 }
 
 .add-form-text {
@@ -198,14 +199,12 @@ body {
   cursor: pointer;
 }
 .save-form-button {
-  
   font-size: 18px;
   padding: 10px 20px;
   border: none;
   border-radius: 18px;
   cursor: pointer;
   background-color: #bcec30;
-
 }
 .edit-form-button {
   font-size: 18px;
@@ -225,4 +224,65 @@ body {
 
 .btn {
   background-color: #b9b9b9;
+}
+.autorize {
+  font-size: 18px;
+  width: 596px;
+  box-sizing: border-box;
+  background: radial-gradient(
+    75.42% 75.42% at 50% 42.37%,
+    rgba(190, 83, 83, 0) 0%,
+    #7334ea 100%
+  );
+  border-radius: 20px;
+  padding: 20px 20px 20px 20px;
+}
+.autorize-button{
+  font-size: 20px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  background-color: #bcec30;
+}
+.header-login{
+  font-size: 32px;
+}
+.form{
+border: 1px solid #7334ea;
+border-radius: 10px;
+padding: 50px;
+}
+
+.input{
+  font-size: 16px;
+  font-family: Helvetica;
+  border-radius: 8px;
+  border: none;
+  padding: 10px;
+}
+.input::placeholder{
+  padding-left: 10px;
+}
+.button-form{
+  font-size: 18px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  background-color: #bcec30;
+}
+.link-form{
+  border: 1px solid #7334ea;
+border-radius: 10px;
+padding: 6px
+}
+.link-form:hover{
+color: #bcec30;
+cursor: pointer;
+}
+.form-center{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }

@@ -1,9 +1,9 @@
-import { setComments } from "../main.js";
+import { setComments, user } from "../main.js";
 import { renderComments } from "./renderComments.js";
 
 
 export const getComments = () => {
-    return fetch('https://wedev-api.sky.pro/api/v1/egor-gorohow/comments',
+    return fetch('https://wedev-api.sky.pro/api/v2/egor-gorohow/comments',
         {
             method: 'GET'
         })
@@ -42,13 +42,16 @@ export const postComments = () => {
     const addLoaderComment = document.querySelector(".mask-comment");
     const formLoader = document.querySelector('.add-form');
     const buttonDeleteElement = document.getElementById('add-button-delete');
-    fetch('https://wedev-api.sky.pro/api/v1/egor-gorohow/comments',
+    fetch('https://wedev-api.sky.pro/api/v2/egor-gorohow/comments',
         {
             method: 'POST',
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            },
             body: JSON.stringify({
                 name: nameElement.value,
                 text: textElement.value,
-                forceError: true
+                // forceError: true
                 // вышел флаг 500 ошибок
             }),
         })
@@ -104,3 +107,41 @@ function loaderHide() {
     formLoader.style.visibility = 'visible';
     buttonDeleteElement.style.visibility = 'visible'
 }
+export function postLogin({ login, password }) {
+    return fetch('https://wedev-api.sky.pro/api/user/login',
+        {
+            method: 'POST',
+            body: JSON.stringify({
+                login,
+                password,
+            })
+        })
+        .then(responseData => {
+            // проверить статусы
+            if (responseData.status != 201) {
+                throw Error('данные введены неверно');
+            }
+            return responseData.json()
+        })
+
+}
+export function postReg({ login, password, name }) {
+    return fetch('https://wedev-api.sky.pro/api/user',
+        {
+            method: 'POST',
+            body: JSON.stringify({
+                login,
+                password,
+                name,
+            })
+        })
+        .then(responseData => {
+            // проверить статусы
+            if (responseData.status != 201) {
+                throw Error('данные введены неверно');
+            }
+            return responseData.json()
+        })
+
+}
+
