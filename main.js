@@ -5,10 +5,13 @@ import { renderComments } from "./modules/renderComments.js";
 
 //СТР РЕЖИМ *
 
-
+export let user = null;
+export const setUser = (data) =>{
+user = data;
+}
 
 const addLoaderComment = document.querySelector(".mask-comment");
-addLoaderComment.style.display = 'none';
+// addLoaderComment.style.display = 'none';
 
 getComments(); //вызываем функцию котороя получит данные и вызовет render функцию
 

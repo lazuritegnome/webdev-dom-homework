@@ -39,10 +39,6 @@ export function addComment() {
         return;
     };
 
-
-    postComments()
-
-
     nameElement.setAttribute('placeholder', 'Введите ваше имя'); //возвращаем placeholder к стандарту после добаваления комментария
     textElement.setAttribute('placeholder', 'Введите ваш коментарий',);//возвращаем placeholder к стандарту после добаваления комментария
 };
@@ -117,14 +113,15 @@ export const initEditElements = () => {
 
 //СОХРАНЕНИЕ отредактированного комментария
 export const initSaveButtons = () => {
-    const formCommentElement = document.getElementById('add-comment');
+
     const saveButtons = document.querySelectorAll(".save-form-button");
     for (const saveButton of saveButtons) {
         saveButton.addEventListener('click', (event) => {
             event.stopPropagation();
             const index = saveButton.dataset.index;
             comments[index].isEdit = false;
-            comments[index].text = formCommentElement.querySelectorAll('.comment')[index].querySelector('textarea').value;
+            console.log(saveButton.parentElement);
+            comments[index].text = saveButton.closest(".comment").querySelector('textarea').value;
             renderComments();
         });
     }

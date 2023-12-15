@@ -1,10 +1,14 @@
-import { comments } from "../main.js";
+import { comments, user } from "../main.js";
+import { postComments } from "./api.js";
 import { actionCommentListener, addLike, editingComment, initEditElements, initSaveButtons } from "./eventListeners.js";
+import { renderLogin } from "./login.js";
 import { sanitizeHtml } from "./utils.js";
 
 export const renderComments = () => {
-  const formCommentElement = document.getElementById('add-comment');
-  formCommentElement.innerHTML = comments.map((comment, index) => {
+  const container = document.querySelector('.container')
+
+  // const formCommentElement = document.getElementById('add-comment');
+  const getRender = comments.map((comment, index) => {
     return `<li class="comment" data-index="${index}">
       <div class="comment-header">
         <div>${sanitizeHtml(comment.name)}</div>
@@ -27,9 +31,34 @@ export const renderComments = () => {
       </div>
     </li>`
   }).join('');
-  addLike();
-  initEditElements();
-  initSaveButtons();
-  editingComment();
-  actionCommentListener();
+  container.innerHTML = `<ul class="comments" >${getRender}</ul>
+  <div class="mask-comment">
+      <div class="loader-comment">Комментарий загружается...</div>
+    </div>
+  ${!user ? `<p class="autorize">Чтобы оставить комментарий пожалуйста, <button class="autorize-button" id="loginButton">АВТОРИЗУЙТЕСЬ</button></p>` : `<div class="add-form">
+  <input type="text" value="${user.name}" readonly class="add-form-name" placeholder="Введите ваше имя" id="form-name" />
+  <textarea type="textarea" class="add-form-text" placeholder="Введите ваш коментарий" rows="4"
+    id="form-text"></textarea>
+  <div class="add-form-row">
+    <button class="add-form-button" id="add-button">Написать</button>
+  </div>
+</div>
+<button class="add-form-button" id="add-button-delete">Удалить последний комментарий</button>`}`
+  const addButtonElement = document.getElementById("add-button")
+  if (addButtonElement) {
+    addButtonElement.addEventListener("click", postComments)
+  }
+  const getLoginbutton = document.getElementById("loginButton")
+  if (getLoginbutton) {
+    getLoginbutton.addEventListener('click', renderLogin)
+  }
+  if (user) {
+    addLike()
+    initEditElements();
+    initSaveButtons();
+    editingComment();
+    actionCommentListener();
+  };
+
+
 };
