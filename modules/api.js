@@ -17,7 +17,7 @@ export const getComments = () => {
             let appComments = responseData.comments.map((comment) => {
                 return {
                     name: comment.author.name,
-                    date: new Date(comment.date).toLocaleString('ru-RU', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).replace(',', ''),
+                    // date: new Date(comment.date).toLocaleString('ru-RU', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).replace(',', ''),
                     text: comment.text,
                     likeCount: comment.likes,
                     isLike: comment.isLiked

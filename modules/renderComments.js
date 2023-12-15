@@ -3,16 +3,22 @@ import { postComments } from "./api.js";
 import { actionCommentListener, addLike, editingComment, initEditElements, initSaveButtons } from "./eventListeners.js";
 import { renderLogin } from "./login.js";
 import { sanitizeHtml } from "./utils.js";
+import { format } from "date-fns";
 
 export const renderComments = () => {
   const container = document.querySelector('.container')
 
   // const formCommentElement = document.getElementById('add-comment');
+
+  
+  const createDate = format(new Date(task.created_at), "MM-dd-yyyy hh:mm");
+
   const getRender = comments.map((comment, index) => {
+    
     return `<li class="comment" data-index="${index}">
       <div class="comment-header">
         <div>${sanitizeHtml(comment.name)}</div>
-        <div class="comment-date">${sanitizeHtml(comment.date)}</div>
+        <div class="comment-date">${createDate}</div>
       </div>
       <div class="comment-body">
         ${comment.isEdit
