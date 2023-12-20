@@ -1,6 +1,6 @@
 import { setComments, user } from "../main.js";
 import { renderComments } from "./renderComments.js";
-
+import { format } from "date-fns";
 
 export const getComments = () => {
     return fetch('https://wedev-api.sky.pro/api/v2/egor-gorohow/comments',
@@ -17,7 +17,7 @@ export const getComments = () => {
             let appComments = responseData.comments.map((comment) => {
                 return {
                     name: comment.author.name,
-                    // date: new Date(comment.date).toLocaleString('ru-RU', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).replace(',', ''),
+                    date: format((new Date(comment.date)),"yyyy-MM-dd hh.mm.ss"),
                     text: comment.text,
                     likeCount: comment.likes,
                     isLike: comment.isLiked
